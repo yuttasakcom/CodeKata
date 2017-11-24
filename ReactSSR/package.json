@@ -1,0 +1,14 @@
+{
+  "name": "react-ssr",
+  "version": "1.0.0",
+  "description": "react server-side rendering",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "Yuttasak Pannawat<yuttasakcom@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^3.5.1",
+    "webpack": "^3.8.1"
+  }
+}
