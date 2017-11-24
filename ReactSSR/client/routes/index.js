@@ -2,10 +2,11 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import Home from '@/components/Home'
 
-const Router = () => (
-  <div>
-    <Route path='/' component={Home} />
-  </div>
-)
-
-export default Router
+export default () => {
+  return (
+    <div>
+      <Route exact path='/' component={Home} />
+      <Route path='/hi' component={() => 'Hi'} />
+    </div>
+  )
+}

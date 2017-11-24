@@ -2396,15 +2396,11 @@ var _routes2 = _interopRequireDefault(_routes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var App = function App() {
-  return _react2.default.createElement(
-    _reactRouterDom.BrowserRouter,
-    null,
-    _react2.default.createElement(_routes2.default, null)
-  );
-};
-
-_reactDom2.default.hydrate(_react2.default.createElement(App, null), document.getElementById('root'));
+_reactDom2.default.hydrate(_react2.default.createElement(
+  _reactRouterDom.BrowserRouter,
+  null,
+  _react2.default.createElement(_routes2.default, null)
+), document.getElementById('root'));
 
 /***/ }),
 /* 36 */
@@ -23355,15 +23351,16 @@ var _Home2 = _interopRequireDefault(_Home);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Router = function Router() {
+exports.default = function () {
   return _react2.default.createElement(
     'div',
     null,
-    _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _Home2.default })
+    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _Home2.default }),
+    _react2.default.createElement(_reactRouterDom.Route, { path: '/hi', component: function component() {
+        return 'Hi';
+      } })
   );
 };
-
-exports.default = Router;
 
 /***/ }),
 /* 76 */

@@ -86,17 +86,9 @@ var _express = __webpack_require__(3);
 
 var _express2 = _interopRequireDefault(_express);
 
-var _react = __webpack_require__(0);
+var _renderer = __webpack_require__(7);
 
-var _react2 = _interopRequireDefault(_react);
-
-var _server = __webpack_require__(4);
-
-var _reactRouterDom = __webpack_require__(1);
-
-var _routes = __webpack_require__(5);
-
-var _routes2 = _interopRequireDefault(_routes);
+var _renderer2 = _interopRequireDefault(_renderer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -105,13 +97,7 @@ var port = process.env.PORT || 3000;
 
 app.use(_express2.default.static('public'));
 app.get('*', function (req, res) {
-  var content = (0, _server.renderToString)(_react2.default.createElement(
-    _reactRouterDom.StaticRouter,
-    { location: req.path, context: {} },
-    _react2.default.createElement(_routes2.default, null)
-  ));
-  var html = '\n    <!DOCTYPE html>\n    <html lang="en">\n    <head>\n      <meta charset="UTF-8">\n      <meta name="viewport" content="width=device-width, initial-scale=1.0">\n      <meta http-equiv="X-UA-Compatible" content="ie=edge">\n      <title>React SSR</title>\n    </head>\n    <body>\n      <div id="root">' + content + '</div>\n      <script src="bundle.js"></script>\n    </body>\n    </html>\n  ';
-  res.send(html);
+  res.send((0, _renderer2.default)(req));
 });
 
 app.listen(port, function (err) {
@@ -155,15 +141,16 @@ var _Home2 = _interopRequireDefault(_Home);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Router = function Router() {
+exports.default = function () {
   return _react2.default.createElement(
     'div',
     null,
-    _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _Home2.default })
+    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _Home2.default }),
+    _react2.default.createElement(_reactRouterDom.Route, { path: '/hi', component: function component() {
+        return 'Hi';
+      } })
   );
 };
-
-exports.default = Router;
 
 /***/ }),
 /* 6 */
@@ -191,6 +178,41 @@ var Home = function Home() {
 };
 
 exports.default = Home;
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _server = __webpack_require__(4);
+
+var _reactRouterDom = __webpack_require__(1);
+
+var _routes = __webpack_require__(5);
+
+var _routes2 = _interopRequireDefault(_routes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function (req) {
+  var content = (0, _server.renderToString)(_react2.default.createElement(
+    _reactRouterDom.StaticRouter,
+    { location: req.path, context: {} },
+    _react2.default.createElement(_routes2.default, null)
+  ));
+
+  return '\n    <!DOCTYPE html>\n    <html lang="en">\n    <head>\n      <meta charset="UTF-8">\n      <meta name="viewport" content="width=device-width, initial-scale=1.0">\n      <meta http-equiv="X-UA-Compatible" content="ie=edge">\n      <title>React SSR</title>\n    </head>\n    <body>\n      <div id="root">' + content + '</div>\n      <script src="bundle.js"></script>\n    </body>\n    </html>\n  ';
+};
 
 /***/ })
 /******/ ]);
