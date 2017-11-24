@@ -1,14 +1,19 @@
 import express from 'express'
 import React from 'react'
 import { renderToString } from 'react-dom/server'
-import Home from '@/components/Home'
+import { StaticRouter } from 'react-router-dom'
+import Routes from '@/routes'
 
 const app = express()
 const port = process.env.PORT || 3000
 
 app.use(express.static('public'))
 app.get('*', (req, res) => {
-  const content = renderToString(<Home />)
+  const content = renderToString(
+    <StaticRouter location={req.path} context={{}}>
+      <Routes />
+    </StaticRouter>
+  )
   const html = `
     <!DOCTYPE html>
     <html lang="en">
