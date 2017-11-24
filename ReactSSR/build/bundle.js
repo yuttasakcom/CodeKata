@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -71,12 +71,18 @@ module.exports = require("react");
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-router-dom");
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _express = __webpack_require__(2);
+var _express = __webpack_require__(3);
 
 var _express2 = _interopRequireDefault(_express);
 
@@ -84,9 +90,9 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _server = __webpack_require__(3);
+var _server = __webpack_require__(4);
 
-var _reactRouterDom = __webpack_require__(6);
+var _reactRouterDom = __webpack_require__(1);
 
 var _routes = __webpack_require__(5);
 
@@ -115,19 +121,52 @@ app.listen(port, function (err) {
 });
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports) {
 
 module.exports = require("express");
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");
 
 /***/ }),
-/* 4 */
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(1);
+
+var _Home = __webpack_require__(6);
+
+var _Home2 = _interopRequireDefault(_Home);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Router = function Router() {
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _Home2.default })
+  );
+};
+
+exports.default = Router;
+
+/***/ }),
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -152,45 +191,6 @@ var Home = function Home() {
 };
 
 exports.default = Home;
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouterDom = __webpack_require__(6);
-
-var _Home = __webpack_require__(4);
-
-var _Home2 = _interopRequireDefault(_Home);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Router = function Router() {
-  return _react2.default.createElement(
-    'div',
-    null,
-    _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _Home2.default })
-  );
-};
-
-exports.default = Router;
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-router-dom");
 
 /***/ })
 /******/ ]);
